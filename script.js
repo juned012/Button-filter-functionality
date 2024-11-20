@@ -59,15 +59,22 @@ let foodData = [
 
 const cardContainer = document.getElementById("card-container");
 
-foodData.forEach((card) => {
-  const cardElement = document.createElement("div");
-  cardElement.classList.add("card");
-  cardElement.innerHTML = `
-    <img src="${card.image}" alt="${card.title}">
-    <h3>${card.title}</h3>
-    <p>${card.description}</p>
-    <p><strong>Price:</strong> $${card.price.toFixed(2)}</p>
-    <p><strong>Rating:</strong> ${card.rating} ⭐</p>
-  `;
-  cardContainer.appendChild(cardElement);
-});
+function displayFoodCards(data) {
+  data.forEach((card) => {
+    const cardElement = document.createElement("div");
+    cardElement.classList.add("card");
+    cardElement.innerHTML = `
+      <img src="${card.image}" alt="${card.title}">
+      <h3>${card.title}</h3>
+      <p>${card.description}</p>
+      <p><strong>Price:</strong> $${card.price.toFixed(2)}</p>
+      <p><strong>Rating:</strong> ${card.rating} ⭐</p>
+    `;
+    cardContainer.appendChild(cardElement);
+  });
+}
+
+displayFoodCards(foodData);
+
+
+
