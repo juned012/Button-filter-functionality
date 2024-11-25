@@ -58,8 +58,10 @@ let foodData = [
 ];
 
 const cardContainer = document.getElementById("card-container");
+const filterButtons = document.querySelectorAll(".filter-buttons button");
 
 function displayFoodCards(data) {
+  cardContainer.innerHTML = "";
   data.forEach((card) => {
     const cardElement = document.createElement("div");
     cardElement.classList.add("card");
@@ -73,8 +75,15 @@ function displayFoodCards(data) {
     cardContainer.appendChild(cardElement);
   });
 }
-
 displayFoodCards(foodData);
 
-
-
+filterButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const category = button.getAttribute("data-category");
+    const filterdData =
+      category === "All"
+        ? foodData
+        : foodData.filter((item) => item.category === category);
+    displayFoodCards(filterdData);
+  });
+});
